@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-import RickMortySwiftApi
+
 
 
 class CharacterManager {
