@@ -16,6 +16,7 @@
 		9146BF21287C823F005FC36D /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 9146BF1D287C823E005FC36D /* Views */; };
 		9146BF22287C823F005FC36D /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 9146BF1E287C823E005FC36D /* Models */; };
 		9146BF23287C823F005FC36D /* ViewControllers in Resources */ = {isa = PBXBuildFile; fileRef = 9146BF1F287C823E005FC36D /* ViewControllers */; };
+		9146BF2A287C8539005FC36D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9146BF29287C8539005FC36D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9146BF1D287C823E005FC36D /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
 		9146BF1E287C823E005FC36D /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		9146BF1F287C823E005FC36D /* ViewControllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewControllers; sourceTree = "<group>"; };
+		9146BF29287C8539005FC36D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		9146BF07287C81AF005FC36D /* RickAndMortySocial */ = {
 			isa = PBXGroup;
 			children = (
+				9146BF28287C8514005FC36D /* Utils */,
 				9146BF1E287C823E005FC36D /* Models */,
 				9146BF1C287C823E005FC36D /* NetworkManagers */,
 				9146BF1F287C823E005FC36D /* ViewControllers */,
@@ -74,6 +77,14 @@
 				9146BF16287C81B1005FC36D /* Info.plist */,
 			);
 			path = RickAndMortySocial;
+			sourceTree = "<group>";
+		};
+		9146BF28287C8514005FC36D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9146BF29287C8539005FC36D /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9146BF09287C81AF005FC36D /* AppDelegate.swift in Sources */,
+				9146BF2A287C8539005FC36D /* Extensions.swift in Sources */,
 				9146BF0B287C81AF005FC36D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
