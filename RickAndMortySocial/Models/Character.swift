@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-
+// Add image handling
 struct CharacterList: Decodable {
     let info: CharacterInfo
     let results: [Character]
