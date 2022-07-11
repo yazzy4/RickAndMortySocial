@@ -1,8 +1,8 @@
 //
 //  Character.swift
-//  RickAndMorty
+//  RickAndMortySocial
 //
-//  Created by Yaz Burrell on 7/9/22.
+//  Created by Yaz Burrell on 7/11/22.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Alamofire
 // Add image handling
 struct CharacterList: Decodable {
     let info: CharacterInfo
-    let results: [Character]
+    let results: Character
 
 
 struct CharacterInfo: Decodable {

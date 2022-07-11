@@ -1,15 +1,15 @@
 //
 //  EpisodeManager.swift
-//  RickAndMorty
+//  RickAndMortySocial
 //
-//  Created by Yaz Burrell on 7/10/22.
+//  Created by Yaz Burrell on 7/11/22.
 //
 
 import Foundation
 import Alamofire
 
 
-struct EpisodManager {
+struct EpisodeManager {
     
     public static func getEpisode(url: String,
                                   onSuccess: @escaping (Episode) -> Void,
