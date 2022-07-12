@@ -1,15 +1,15 @@
 //
 //  EpisodeManager.swift
-//  RickAndMorty
+//  RickAndMortySocial
 //
-//  Created by Yaz Burrell on 7/10/22.
+//  Created by Yaz Burrell on 7/11/22.
 //
 
 import Foundation
 import Alamofire
 
 
-struct EpisodManager {
+struct EpisodeManager {
     
     func getAllEps(page: Int, completion: @escaping(Episodes) -> Void) {
             guard let url = URL(string: "https://rickandmortyapi.com/api/episode?page=\(page)") else { return }
