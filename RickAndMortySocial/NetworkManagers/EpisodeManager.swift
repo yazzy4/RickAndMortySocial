@@ -11,17 +11,25 @@ import Alamofire
 
 struct EpisodManager {
     
-    public static func getEpisode(url: String,
-                                  onSuccess: @escaping (Episode) -> Void,
-                                  onError: @escaping (String) -> Void) {
-        
-        AF.request(url, method: .get).validate()
-            .responseDecodable(of: Episode.self) { response in
-                guard let episode = response.value else {
-                    onError("Error fetching the episode!")
-                    return
+    func getAllEps(page: Int, completion: @escaping(Episodes) -> Void) {
+            guard let url = URL(string: "https://rickandmortyapi.com/api/episode?page=\(page)") else { return }
+            
+            let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+                if let error = error {
+                    print("Error fetching episodes: \(error.localizedDescription)")
                 }
-                onSuccess(episode)
-        }
+                
+                guard let epsData = data else { return }
+                let decoder = JSONDecoder()
+                
+                do {
+                    let decodedData = try decoder.decode(Episodes.self, from: epsData)
+                    completion(decodedData)
+                    //print(decodedData)
+                } catch {
+                    print("Error decoding data.")
+                }
+            }
+            dataTask.resume()
     }
 }

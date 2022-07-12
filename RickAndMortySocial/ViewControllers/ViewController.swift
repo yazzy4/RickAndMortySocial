@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RickMortySwiftApi
+
 
 class ViewController: UIViewController {
     
