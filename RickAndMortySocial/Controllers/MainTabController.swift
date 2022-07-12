@@ -7,18 +7,29 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabController: UITabBarController {
     
     // MARK: - Properties
     
-//    var character: CharacterList {
-//        guard let nav = viewControllers?[0] as? UINavigationController else { return }
-//    }
+    var character: CharacterList? {
+        didSet {
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedController else { return }
+        }
+    }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureViewControllers()
+    }
+    
+    // MARK: - Helpers
     
     func configureViewControllers() {
         
-        let feed = CharacterFeedController(collectionViewLayout: UICollectionViewFlowLayout())
-        let nav1 = templateNavigationController(image: UIImage(named: "NewsFeed"), rootViewController: feed)
+        let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        let nav1 = templateNavigationController(image: UIImage(named: "home_unselected"), rootViewController: feed)
         
         //let exploreFeed =
         

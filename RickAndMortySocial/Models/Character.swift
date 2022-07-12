@@ -10,11 +10,11 @@ import Alamofire
 
 // Add image handling
 struct CharacterList: Decodable {
-    let info: CharacterInfo
+    let info: CharacterListInfo
     let results: Character
 
 
-struct CharacterInfo: Decodable {
+struct CharacterListInfo: Decodable {
     var count: Int
     var pages: Int
 }

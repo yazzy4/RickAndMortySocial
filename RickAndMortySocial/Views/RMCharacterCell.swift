@@ -13,7 +13,7 @@ class RMCharacterCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var character: CharacterList? {
+    var character: CharacterList.Character? {
         didSet { configure() }
     }
     
@@ -61,10 +61,10 @@ class RMCharacterCell: UICollectionViewCell {
     func configure() {
         guard let character = character else { return }
         
-        characterImageView.sd_setImage(with: URL(string: character.results.image))
+        characterImageView.sd_setImage(with: URL(string: character.image))
         
-        statusLabel.text = character.results.status
-        speciesLabel.text = character.results.species
+        statusLabel.text = character.status
+        speciesLabel.text = character.species
     }
     
 }
