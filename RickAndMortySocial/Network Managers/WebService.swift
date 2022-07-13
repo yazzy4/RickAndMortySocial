@@ -11,43 +11,7 @@ import UIKit
 
 
 class WebService: Decodable {
-//
-//    enum ErrorType: Error {
-//        case genericFailure
-//        case failedToDecodeData
-//        case invalidStatusCode
-//    }
-//
-//    static let shared = WebService()
-//
-//    func fetchCharacters(url: String) async throws -> CharacterList? {
-//
-//        let (data, response) = try await URLSession.shared.data(from: URL(string: url)!)
-//
-//        guard let networkRequestResponse = response as? HTTPURLResponse, networkRequestResponse.statusCode == 200 else {
-//            throw ErrorType.invalidStatusCode
-//        }
-//
-//        let decodedData = try JSONDecoder().decode(CharacterList.self, from: data)
-//        return (decodedData.self)
-//    }
-//
-//    func fetchEpisodes(url: String) async throws -> Episode? {
-//
-//        let (data, response) = try await URLSession.shared.data(from: URL(string: url)!)
-//
-//        guard let networkRequestResponse = response as? HTTPURLResponse,
-//              networkRequestResponse.statusCode == 200 else {
-//            throw ErrorType.invalidStatusCode
-//        }
-//
-//        let decodedData = try JSONDecoder().decode(Episode.self, from: data)
-//
-//        return (decodedData.self)
-//    }
 
-    
-    // old way
     static let shared = WebService()
       
       private init() {
