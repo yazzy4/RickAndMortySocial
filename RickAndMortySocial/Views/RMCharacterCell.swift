@@ -13,7 +13,7 @@ class RMCharacterCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var character: CharacterList.Character? {
+    var character: Character? {
         didSet { configure() }
     }
     

@@ -6,54 +6,73 @@
 //
 
 import Foundation
-import Alamofire
 
-class CharacterManager {
+
+class CharacterManager: Decodable {
     
-    public static func getCharactersByURL(page: String, name: String,
-                      status: String, onSuccess:
-                      @escaping(CharacterList) -> Void,
-                      onError: @escaping(String) -> Void) {
-        
-        let url = "https://rickandmortyapi.com/api/character"
-        
-        var parameters = [String : String]()
-        
-        // https://rickandmortyapi.com/api/character/?page=19
-        parameters["page"] = page
-        
-        if !name.isEmpty {
-            parameters["name"] = name
-        }
-        
-        if !status.isEmpty {
-            parameters["status"] = status
-        }
-        
-        AF.request(url, method: .get, parameters: parameters).validate().responseDecodable(of: CharacterList.self) { response in
-            
-            guard let characterCall = response.value else {
-                onError("Error fetching characters page numbers on page: \(page)")
-                return
-            }
-            onSuccess(characterCall)
-        }
-      
+    enum ErrorType: Error {
+        case genericFailure
+        case failedToDecodeData
+        case invalidStatusCode
     }
     
-    public static func getCharacterByID(id: Int, onSuccess: @escaping(CharacterList.Character) -> Void, onError: @escaping(String) -> Void ) {
+    static let shared = CharacterManager()
+    
+    func fetchCharacters(url: String) async throws -> CharacterList? {
         
-        let url = "https://rickandmortyapi.com/api/character/\(id)"
+        let (data, response) = try await URLSession.shared.data(from: URL(string: url)!)
         
-        AF.request(url, method: .get).validate().responseDecodable(of: CharacterList.Character.self) { response in
-            
-            guard let characterCall = response.value else {
-                onError("Error fetching charter by id #\(id)")
-                return
-            }
-            onSuccess(characterCall)
+        guard let networkRequestResponse = response as? HTTPURLResponse, networkRequestResponse.statusCode == 200 else {
+            throw ErrorType.invalidStatusCode
         }
+        
+        let decodedData = try JSONDecoder().decode(CharacterList.self, from: data)
+        return (decodedData.self)
     }
+ 
+//    func getCharacter(url: String, completion: @escaping(Character) -> Void) {
+//            guard let url = URL(string: url) else { return }
+//
+//            let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+//                if let error = error {
+//                    print("Error fetching characters: \(error.localizedDescription)")
+//                }
+//
+//                guard let charData = data else { return }
+//                let decoder = JSONDecoder()
+//
+//                do {
+//                    let decodedData = try decoder.decode(Character.self, from: charData)
+//                    completion(decodedData)
+//                    //print(decodedData)
+//                } catch {
+//                    print("Error decoding data.")
+//                }
+//            }
+//            dataTask.resume()
+//    }
+//
+//    func getAllCharacters(page: Int, completion: @escaping(CharacterList) -> Void) {
+//        guard let url = URL(string: "https://rickandmortyapi.com/api/character/?page=\(page)") else { return }
+//
+//        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
+//            if let error = error {
+//                print("Error fetching episodes: \(error.localizedDescription)")
+//            }
+//
+//            guard let charData = data else { return }
+//            let decoder = JSONDecoder()
+//
+//            do {
+//                let decodedData = try decoder.decode(CharacterList.self, from: charData)
+//                completion(decodedData)
+//                //print(decodedData)
+//            } catch {
+//                print("Error decoding data.")
+//            }
+//        }
+//        dataTask.resume()
+//    }
 
 }
 

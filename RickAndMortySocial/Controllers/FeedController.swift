@@ -13,8 +13,12 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Properties
     
-    var characters: CharacterList.Character? {
+    var character: Character? {
         didSet { configureLeftBarButton() }
+    }
+    
+    var charactersResults = [CharacterList]() {
+        didSet { collectionView.reloadData() }
     }
     
     // MARK: - Lifecycle
@@ -22,6 +26,7 @@ class FeedController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        fetchCharacters()
 
     }
     
@@ -34,17 +39,8 @@ class FeedController: UICollectionViewController {
     // MARK: - API
     
     func fetchCharacters() {
-        guard let characters = characters else {
-            return
-        }
-
-//        CharacterManager.getCharactersByURL(page: characters?.info.pages, name: characters?.results.name, status: characters?.results.status) { characters in
-//            <#code#>
-//        } onError: { <#String#> in
-//            <#code#>
-//        }
-
     }
+
     
     
     // MARK: - Helpers
@@ -64,7 +60,7 @@ class FeedController: UICollectionViewController {
     }
     
     func configureLeftBarButton() {
-        guard let character = characters else { return }
+        guard let character = character else { return }
         
         let profileImageView = UIImageView()
         profileImageView.setDimensions(width: 32, height: 32)
@@ -79,15 +75,18 @@ class FeedController: UICollectionViewController {
 
 }
 
+
+// MARK: - UICollectionViewDelegate/Datasource
+
 extension FeedController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        cell.largeContentTitle = "Test"
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) 
+        
+        cell.backgroundColor = .blue
         return cell 
     }
 }

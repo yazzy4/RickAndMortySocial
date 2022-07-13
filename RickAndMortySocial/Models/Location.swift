@@ -8,18 +8,18 @@
 import Foundation
 import Alamofire
 
-struct LocationList: Decodable {
+struct LocationList: Codable {
     let info: LocationInfo
     let results: [Location]
     
-struct LocationInfo: Decodable {
+struct LocationInfo: Codable {
     var count: Int
     var pages: Int
     
     }
     
     
-struct Location: Decodable {
+struct Location: Codable {
     let name: String
     var type: String
     var dimension: String
@@ -28,7 +28,7 @@ struct Location: Decodable {
     
     }
     
-struct Residents: Decodable {
+struct Residents: Codable {
     
     }
 }

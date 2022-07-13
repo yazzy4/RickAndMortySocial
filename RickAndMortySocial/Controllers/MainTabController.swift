@@ -11,7 +11,7 @@ class MainTabController: UITabBarController {
     
     // MARK: - Properties
     
-    var character: CharacterList? {
+    var character: Character? {
         didSet {
             guard let nav = viewControllers?[0] as? UINavigationController else { return }
             guard let feed = nav.viewControllers.first as? FeedController else { return }
@@ -24,6 +24,14 @@ class MainTabController: UITabBarController {
         configureViewControllers()
     }
     
+    // MARK: - API
+    
+    func fetchCharacters() {
+        
+        
+        
+    }
+    
     // MARK: - Helpers
     
     func configureViewControllers() {
@@ -31,15 +39,16 @@ class MainTabController: UITabBarController {
         let feed = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = templateNavigationController(image: UIImage(named: "home_unselected"), rootViewController: feed)
         
-        //let exploreFeed =
+        let explore = ExploreController()
+        let nav2 = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: explore)
         
-        viewControllers = [nav1]
+        viewControllers = [nav1, nav2]
     }
     
     func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = image
-        nav.navigationBar.barTintColor = .white
+        nav.navigationBar.barTintColor = .blue
         nav.isNavigationBarHidden = false
         return nav
         

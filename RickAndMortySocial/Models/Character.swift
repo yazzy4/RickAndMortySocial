@@ -9,18 +9,17 @@ import Foundation
 import Alamofire
 
 // Add image handling
-struct CharacterList: Decodable {
+struct CharacterList: Codable {
     let info: CharacterListInfo
-    let results: Character
+    var results: [Character]
+}
 
-
-struct CharacterListInfo: Decodable {
+struct CharacterListInfo: Codable {
     var count: Int
     var pages: Int
 }
 
-
-struct Character: Decodable {
+struct Character: Codable {
     let id: Int
     let name: String
     let status: String
@@ -33,9 +32,6 @@ struct Character: Decodable {
 
 }
 
-struct Origin: Decodable {
+struct Origin: Codable {
     let name: String
-}
-
-
 }
