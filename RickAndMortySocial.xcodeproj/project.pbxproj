@@ -17,6 +17,8 @@
 		91798D4E287EFAF5006A9AF1 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91798D4D287EFAF5006A9AF1 /* CharacterViewModel.swift */; };
 		91798D50287F04CE006A9AF1 /* EpisodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91798D4F287F04CE006A9AF1 /* EpisodeViewModel.swift */; };
 		91798D72287F6D34006A9AF1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91798D71287F6D34006A9AF1 /* Location.swift */; };
+		91798D74287F7C75006A9AF1 /* RMCharacterInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91798D73287F7C75006A9AF1 /* RMCharacterInfoHeader.swift */; };
+		91798D76287F83FC006A9AF1 /* ProfileController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 91798D75287F83FC006A9AF1 /* ProfileController .swift */; };
 		91E9A1DF287CA7E2001DA695 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E9A1DE287CA7E2001DA695 /* ViewController.swift */; };
 		91E9A1E1287CA91D001DA695 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E9A1E0287CA91D001DA695 /* Extensions.swift */; };
 		91E9A1E3287CA94A001DA695 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E9A1E2287CA94A001DA695 /* Character.swift */; };
@@ -39,6 +41,8 @@
 		91798D4D287EFAF5006A9AF1 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		91798D4F287F04CE006A9AF1 /* EpisodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewModel.swift; sourceTree = "<group>"; };
 		91798D71287F6D34006A9AF1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		91798D73287F7C75006A9AF1 /* RMCharacterInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterInfoHeader.swift; sourceTree = "<group>"; };
+		91798D75287F83FC006A9AF1 /* ProfileController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileController .swift"; sourceTree = "<group>"; };
 		91E9A1DE287CA7E2001DA695 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		91E9A1E0287CA91D001DA695 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		91E9A1E2287CA94A001DA695 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				91E9A1F5287CB413001DA695 /* MainTabController.swift */,
 				91E9A1F7287CCE4C001DA695 /* FeedController.swift */,
 				91E9A1F9287CD437001DA695 /* ExploreController.swift */,
+				91798D75287F83FC006A9AF1 /* ProfileController .swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				91E9A1EC287CAA87001DA695 /* RMCharacterCell.swift */,
+				91798D73287F7C75006A9AF1 /* RMCharacterInfoHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91798D74287F7C75006A9AF1 /* RMCharacterInfoHeader.swift in Sources */,
 				91E9A1DF287CA7E2001DA695 /* ViewController.swift in Sources */,
 				91798D4E287EFAF5006A9AF1 /* CharacterViewModel.swift in Sources */,
 				91E9A1E9287CA9A6001DA695 /* WebService.swift in Sources */,
@@ -238,6 +245,7 @@
 				91E9A1ED287CAA87001DA695 /* RMCharacterCell.swift in Sources */,
 				91E9A1E5287CA972001DA695 /* Episode.swift in Sources */,
 				91798D72287F6D34006A9AF1 /* Location.swift in Sources */,
+				91798D76287F83FC006A9AF1 /* ProfileController .swift in Sources */,
 				9146BF09287C81AF005FC36D /* AppDelegate.swift in Sources */,
 				91798D50287F04CE006A9AF1 /* EpisodeViewModel.swift in Sources */,
 				91E9A1E3287CA94A001DA695 /* Character.swift in Sources */,

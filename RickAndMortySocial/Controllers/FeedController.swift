@@ -29,7 +29,7 @@ class FeedController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        configureUI()
         fetchCharacters()
   
     }
@@ -66,9 +66,9 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Helpers
     
-    func configure() {
+    func configureUI() {
         
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         
         collectionView.register(RMCharacterCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.dataSource = self
@@ -115,6 +115,51 @@ extension FeedController {
         
         return cell 
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = ProfileController(character: characters[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension FeedController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let viewModel = CharacterViewModel(character: characters[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height
+        
+        return CGSize(width: view.frame.width, height: height + 72)
+    }
+}
+
+// MARK: - TweetCellDelegate
+
+extension FeedController {
+//    func handleLikeTapped(_ cell: TweetCell) {
+//       // guard var tweet = cell.tweet else { return }
+//
+//        cell.tweet?.didLike.toggle()
+//
+//        print("DEBUG: Tweet is liked \(cell.tweet?.didLike)")
+//    }
+//
+//    func handleReplyTapped(_ cell: TweetCell) {
+//        guard let tweet = cell.tweet else { return }
+//        let controller = UploadTweetController(user: tweet.user, config: .reply(tweet))
+//        let nav = UINavigationController(rootViewController: controller)
+//        nav.modalPresentationStyle = .fullScreen
+//        present(nav, animated: true, completion: nil)
+//    }
+//
+//    func handleProfileImageTapped(_ cell: RMCharacterCell) {
+//       guard let user = cell.tweet?.user else { return }
+//        let controller = ProfileController(user: user)
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
+    
+  
+}
+
 
 

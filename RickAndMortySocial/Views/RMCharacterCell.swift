@@ -8,6 +8,9 @@
 import UIKit
 import SDWebImage
 
+protocol CharacterCellDelegate: AnyObject {
+    func handleProfileImageTapped(_ cell: RMCharacterCell)
+}
 
 class RMCharacterCell: UICollectionViewCell {
     
@@ -16,8 +19,6 @@ class RMCharacterCell: UICollectionViewCell {
     var character: Character? {
         didSet { configure() }
     }
-    
-    
     
     lazy var characterImageView: UIImageView = {
         let iv = UIImageView()
