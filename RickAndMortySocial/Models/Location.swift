@@ -1,25 +1,25 @@
 //
 //  Location.swift
-//  RickAndMorty
+//  RickAndMortySocial
 //
-//  Created by Yaz Burrell on 7/9/22.
+//  Created by Yaz Burrell on 7/11/22.
 //
 
 import Foundation
 import Alamofire
 
-struct LocationList: Decodable {
+struct LocationList: Codable {
     let info: LocationInfo
     let results: [Location]
     
-struct LocationInfo: Decodable {
+struct LocationInfo: Codable {
     var count: Int
     var pages: Int
     
     }
     
     
-struct Location: Decodable {
+struct Location: Codable {
     let name: String
     var type: String
     var dimension: String
@@ -28,9 +28,8 @@ struct Location: Decodable {
     
     }
     
-struct Residents: Decodable {
+struct Residents: Codable {
     
     }
 }
-
 

@@ -1,8 +1,8 @@
 //
 //  Episode.swift
-//  RickAndMorty
+//  RickAndMortySocial
 //
-//  Created by Yaz Burrell on 7/9/22.
+//  Created by Yaz Burrell on 7/11/22.
 //
 
 import Foundation
