@@ -13,11 +13,13 @@ class RMCharacterCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var character: CharacterList.Character? {
+    var character: Character? {
         didSet { configure() }
     }
     
-    private lazy var characterImageView: UIImageView = {
+    
+    
+    lazy var characterImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
@@ -27,7 +29,7 @@ class RMCharacterCell: UICollectionViewCell {
         return iv
     }()
     
-    private lazy var statusLabel: UILabel = {
+     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
@@ -35,7 +37,31 @@ class RMCharacterCell: UICollectionViewCell {
         return label
     }()
     
-    private let speciesLabel = UILabel()
+     lazy var speciesLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        label.text = "Test Caption"
+        return label
+    }()
+    
+      var genderLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        label.text = "Test Caption"
+        return label
+    }()
+    
+    private lazy var originLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
+        label.text = "Test Caption"
+        return label
+    }()
+    
+    
     
     // MARK: - Lifecycle
     
@@ -44,7 +70,7 @@ class RMCharacterCell: UICollectionViewCell {
         
         addSubview(characterImageView)
         characterImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop:                         8, paddingBottom: 8)
-        let stack = UIStackView(arrangedSubviews: [statusLabel, speciesLabel])
+        let stack = UIStackView(arrangedSubviews: [nameLabel, speciesLabel])
         stack.axis = .vertical
         stack.spacing = 2
         
@@ -60,11 +86,11 @@ class RMCharacterCell: UICollectionViewCell {
     
     func configure() {
         guard let character = character else { return }
+        nameLabel.text = character.name
+        speciesLabel.text = character.species
         
         characterImageView.sd_setImage(with: URL(string: character.image))
-        
-        statusLabel.text = character.status
-        speciesLabel.text = character.species
+ 
     }
     
 }

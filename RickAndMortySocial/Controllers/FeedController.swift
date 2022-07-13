@@ -13,16 +13,25 @@ class FeedController: UICollectionViewController {
     
     // MARK: - Properties
     
-    var characters: CharacterList.Character? {
+    var character: Character? {
         didSet { configureLeftBarButton() }
     }
+    
+    private var characters = [Character]() {
+         didSet { collectionView.reloadData() }
+    }
+    var currentUrl = ""
+    var currentPage = 0
+    private var charactersImage = [UIImage]()
+    
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
+        fetchCharacters()
+  
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,26 +42,37 @@ class FeedController: UICollectionViewController {
     
     // MARK: - API
     
-    func fetchCharacters() {
-        guard let characters = characters else {
-            return
+    func fetchCharacters(){
+        WebService.shared.getCharacters(name: character?.name, status: character?.status, species: character?.species, gender: character?.gender) { [weak self] (characters) in
+            guard let self = self else {return}
+            characters.forEach({
+                WebService.shared.getImage(fromUrl: $0.image) { (image) in
+                    guard let image = image else { return }
+                    DispatchQueue.main.async {
+                        
+                        self.charactersImage.append(image)
+                        self.collectionView.reloadData()
+                    }
+                }
+            })
+            DispatchQueue.main.async {
+                self.characters = characters
+            }
         }
 
-//        CharacterManager.getCharactersByURL(page: characters?.info.pages, name: characters?.results.name, status: characters?.results.status) { characters in
-//            <#code#>
-//        } onError: { <#String#> in
-//            <#code#>
-//        }
+}
 
-    }
     
     
     // MARK: - Helpers
     
     func configure() {
+        
         view.backgroundColor = .red
         
         collectionView.register(RMCharacterCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
         let imageView = UIImageView(image: UIImage(named: "Twitter"))
         
@@ -64,7 +84,7 @@ class FeedController: UICollectionViewController {
     }
     
     func configureLeftBarButton() {
-        guard let character = characters else { return }
+        guard let character = character else { return }
         
         let profileImageView = UIImageView()
         profileImageView.setDimensions(width: 32, height: 32)
@@ -75,19 +95,24 @@ class FeedController: UICollectionViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
-
-
 }
 
+
+// MARK: - UICollectionViewDelegate/Datasource
+
 extension FeedController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.charactersImage.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        cell.largeContentTitle = "Test"
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RMCharacterCell
+        let characters = characters[indexPath.row]
+        
+        cell.characterImageView.image = charactersImage[indexPath.row]
+        cell.nameLabel.text = characters.name
+        cell.speciesLabel.text = characters.species
+        
         return cell 
     }
 }

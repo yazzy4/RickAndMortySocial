@@ -1,29 +1,30 @@
 //
-//  EpisodeManager.swift
-//  RickAndMortySocial
+//  CharacterManager.swift
+//  RickAndMorty
 //
-//  Created by Yaz Burrell on 7/11/22.
+//  Created by Yaz Burrell on 7/10/22.
 //
 
 import Foundation
 import Alamofire
 
 
-struct EpisodeManager {
+
+class CharacterManager {
     
-    func getAllEps(page: Int, completion: @escaping(Episodes) -> Void) {
-            guard let url = URL(string: "https://rickandmortyapi.com/api/episode?page=\(page)") else { return }
+    func getCharacter(url: String, completion: @escaping(CharacterList.Character) -> Void) {
+            guard let url = URL(string: url) else { return }
             
             let dataTask = URLSession.shared.dataTask(with: url) { (data, _, error) in
                 if let error = error {
-                    print("Error fetching episodes: \(error.localizedDescription)")
+                    print("Error fetching characters: \(error.localizedDescription)")
                 }
                 
-                guard let epsData = data else { return }
+                guard let charData = data else { return }
                 let decoder = JSONDecoder()
                 
                 do {
-                    let decodedData = try decoder.decode(Episodes.self, from: epsData)
+                    let decodedData = try decoder.decode(CharacterList.Character.self, from: charData)
                     completion(decodedData)
                     //print(decodedData)
                 } catch {
@@ -32,4 +33,5 @@ struct EpisodeManager {
             }
             dataTask.resume()
     }
+
 }
