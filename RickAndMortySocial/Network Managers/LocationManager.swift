@@ -23,4 +23,8 @@ struct LocationManager {
                 onSuccess(episode)
         }
     }
+    
+    public static func getAllLocations() {
+        
+    }
 }
