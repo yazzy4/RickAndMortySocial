@@ -13,7 +13,7 @@ class RMProfileDetailsView: UIView {
     
     private var profileFilterView = RMProfileFilterView()
     
-    private lazy var tableView: UITableView = {
+     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isUserInteractionEnabled = true

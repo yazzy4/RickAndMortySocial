@@ -90,7 +90,7 @@ class RMProfileHeader: UICollectionReusableView {
         return view
     }()
 
-    private let followingLabel: UILabel = {
+    private let typeLabel: UILabel = {
         let label = UILabel()
         label.text = "0 Following"
         label.isUserInteractionEnabled = true
@@ -98,7 +98,7 @@ class RMProfileHeader: UICollectionReusableView {
         return label
     }()
 
-    private let followersLabel: UILabel = {
+    private let genderLabel: UILabel = {
         let label = UILabel()
         label.text = "2 Followers"
         label.isUserInteractionEnabled = true
@@ -142,7 +142,7 @@ class RMProfileHeader: UICollectionReusableView {
                                 right: rightAnchor, paddingTop: 8, paddingLeft: 12,
                                 paddingRight: 12)
 
-        let followStack = UIStackView(arrangedSubviews: [followingLabel, followersLabel])
+        let followStack = UIStackView(arrangedSubviews: [typeLabel, genderLabel])
         followStack.axis = .horizontal
         followStack.spacing = 8
         followStack.distribution = .fillEqually
@@ -183,9 +183,9 @@ class RMProfileHeader: UICollectionReusableView {
 
         profileImageView.sd_setImage(with: URL(string: character.image))
 
-//        editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
-//        followersLabel.attributedText = viewModel.followersString
-//        followingLabel.attributedText = viewModel.followingString
+        editProfileFollowButton.setTitle(viewModel.character.status, for: .normal)
+        typeLabel.attributedText = viewModel.likesAttributedString
+        genderLabel.attributedText = viewModel.retweetAttributedString
 
         fullnameLabel.text = character.name
         usernameLabel.text = viewModel.fakeUsername

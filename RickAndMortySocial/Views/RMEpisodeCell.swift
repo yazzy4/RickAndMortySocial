@@ -16,7 +16,7 @@ class RMEpisodeCell: UITableViewCell {
         didSet { configure() }
     }
     
-    private lazy var episodeLabel: UILabel = {
+     lazy var episodeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.text = "Username"
@@ -24,7 +24,7 @@ class RMEpisodeCell: UITableViewCell {
         return label
     }()
     
-    private lazy var episodeDetailLabel: UILabel = {
+    lazy var episodeDetailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = UIColor.gray
@@ -32,7 +32,7 @@ class RMEpisodeCell: UITableViewCell {
         return label
     }()
     
-    private lazy var dateLabel: UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.lightGray
         label.font = UIFont.init(name: "SFProText-Semibold", size: 11.0)

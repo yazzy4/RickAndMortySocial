@@ -101,7 +101,7 @@ class WebService: Decodable {
               switch response.result {
               case .success:
                   guard let data = response.value,
-                        let locations = try? JSONDecoder().decode(LocationrList.self, from: data).results
+                        let locations = try? JSONDecoder().decode(LocationList.self, from: data).results
                   else { return }
                   completion(locations)
               case .failure(let error):

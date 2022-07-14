@@ -34,11 +34,11 @@ class CharacterViewModel: ObservableObject {
         }
         
         var retweetAttributedString: NSAttributedString? {
-            return attributedText(withValue: character.episode.count, text: "Episodes")
+            return attributedText(withValue: character.episode.count, text: ": Episodes")
         }
         
         var likesAttributedString: NSAttributedString? {
-            return attributedText(withValue: character.id, text: "ID")
+            return attributedText(withValue: character.id, text: " : ID")
         }
         
         var userInfoText: NSAttributedString {
