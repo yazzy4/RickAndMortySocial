@@ -17,7 +17,7 @@ struct Location: Codable {
     let created: String
 }
 
-struct LocationrList: Codable {
+struct LocationList: Codable {
     let results: [Location]
     let info: Info
 }
