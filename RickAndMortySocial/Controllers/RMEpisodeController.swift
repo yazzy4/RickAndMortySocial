@@ -7,25 +7,24 @@
 
 import UIKit
 
-private let reuseIdentifier = "characterCell"
+private let reuseIdentifier = "episodeCell"
 
-class EpisodeController: UITableViewController {
+class RMEpisodeController: UITableViewController {
 
-    
     //MARK: - Properties
     
     private var episodes = [Episode]() {
         didSet { tableView.reloadData() }
     }
     
-    private var filteredEpisodes = [Episode]() {
-        didSet { tableView.reloadData() }
-    }
+//    private var filteredEpisodes = [Episode]() {
+//        didSet { tableView.reloadData() }
+//    }
     
-    private var inSearchMode: Bool {
-        return searchController.isActive &&
-        !searchController.searchBar.text!.isEmpty
-    }
+//    private var inSearchMode: Bool {
+//        return searchController.isActive &&
+//        !searchController.searchBar.text!.isEmpty
+//    }
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -57,16 +56,14 @@ class EpisodeController: UITableViewController {
                 self.seasons = Array(Set(episodesSeason)).sorted()
             }
         }
-        
     }
     
     //MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
         navigationItem.title = "Explore"
         
-        tableView.register(RMCharacterCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(RMEpisodeCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 60
         tableView.separatorStyle = .none
     }
@@ -82,16 +79,16 @@ class EpisodeController: UITableViewController {
 }
 
 // MARK: - UITableViewDelegate/DataSource
-extension EpisodeController {
+extension RMEpisodeController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inSearchMode ? filteredEpisodes.count : episodes.count
+        return episodes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! RMEpisodeCell
-        let episode = inSearchMode ? filteredEpisodes[indexPath.row] : episodes[indexPath.row]
+        let episode = episodes[indexPath.row] 
         cell.episode = episode
-        
+       
         return cell
     }
 }

@@ -9,10 +9,10 @@ import UIKit
 
 private let reuseIdentifier = "CharacterCell"
 
-class FeedController: UICollectionViewController {
+class RMFeedController: UICollectionViewController {
     
     // MARK: - Properties
-    
+
     var character: Character? {
         didSet { configureLeftBarButton() }
     }
@@ -25,8 +25,9 @@ class FeedController: UICollectionViewController {
     private var charactersImage = [UIImage]()
     
     
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -71,14 +72,12 @@ class FeedController: UICollectionViewController {
         view.backgroundColor = .white
         
         collectionView.register(RMCharacterCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
+
         
-        let imageView = UIImageView(image: UIImage(named: "Twitter"))
-        
-        imageView.contentMode = .scaleAspectFit
-        imageView.setDimensions(width: 44, height: 44)
-        navigationItem.titleView = imageView
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .automatic
+        self.navigationItem.title = "Characters"
+       
         
         
     }
@@ -100,7 +99,7 @@ class FeedController: UICollectionViewController {
 
 // MARK: - UICollectionViewDelegate/Datasource
 
-extension FeedController {
+extension RMFeedController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.charactersImage.count
     }
@@ -117,15 +116,16 @@ extension FeedController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = ProfileController(character: characters[indexPath.row])
+        let controller = RMProfileController(character: characters[indexPath.row])
         navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension FeedController: UICollectionViewDelegateFlowLayout {
+extension RMFeedController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let viewModel = CharacterViewModel(character: characters[indexPath.row])
         let height = viewModel.size(forWidth: view.frame.width).height
         
@@ -135,10 +135,10 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - TweetCellDelegate
 
-extension FeedController: CharacterCellDelegate {
+extension RMFeedController: CharacterCellDelegate {
     func handleProfileImageTapped(_ cell: RMCharacterCell) {
         guard let character = cell.character else { return }
-        let controller = ProfileController(character: character)
+        let controller = RMProfileController(character: character)
         navigationController?.pushViewController(controller, animated: true)
     }
   

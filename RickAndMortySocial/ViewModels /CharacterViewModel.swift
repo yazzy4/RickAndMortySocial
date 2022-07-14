@@ -9,13 +9,11 @@ import Foundation
 import UIKit
 
 enum ProfileFilterOptions: Int, CaseIterable {
-    case character
     case episodes
     case locations
     
     var description: String {
         switch self {
-        case .character: return "Charter"
         case .episodes: return "Episodes"
         case .locations: return "Location"
         }

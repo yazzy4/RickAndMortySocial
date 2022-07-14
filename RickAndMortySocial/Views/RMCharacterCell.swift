@@ -12,6 +12,7 @@ protocol CharacterCellDelegate: AnyObject {
     func handleProfileImageTapped(_ cell: RMCharacterCell)
 }
 
+//TweeCell
 class RMCharacterCell: UICollectionViewCell {
     
     // MARK: - Properties
@@ -24,8 +25,8 @@ class RMCharacterCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
-        iv.setDimensions(width: 40, height: 40)
-        iv.layer.cornerRadius = 40 / 2
+        iv.setDimensions(width: 60, height: 60)
+        iv.layer.cornerRadius = 60 / 2
         
         return iv
     }()
@@ -62,8 +63,7 @@ class RMCharacterCell: UICollectionViewCell {
         return label
     }()
     
-    
-    
+
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
