@@ -8,21 +8,32 @@
 import Foundation
 import UIKit
 
+enum ProfileFilterOptions: Int, CaseIterable {
+    case character
+    case episodes
+    case locations
+    
+    var description: String {
+        switch self {
+        case .character: return "Charter"
+        case .episodes: return "Episodes"
+        case .locations: return "Location"
+        }
+    }
+}
+
 
 class CharacterViewModel: ObservableObject {
         
         let character: Character
         
-        
         var profileImageUrl: URL? {
             return URL(string: character.image)
         }
         
-        
         var fakeUsername: String {
             return "@\(character.name)"
         }
-        
         
         var retweetAttributedString: NSAttributedString? {
             return attributedText(withValue: character.episode.count, text: "Episodes")
@@ -31,7 +42,6 @@ class CharacterViewModel: ObservableObject {
         var likesAttributedString: NSAttributedString? {
             return attributedText(withValue: character.id, text: "ID")
         }
-        
         
         var userInfoText: NSAttributedString {
             let title = NSMutableAttributedString(string: character.type,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RMCharacterInfoHeader: UICollectionReusableView {
+class RMCharacterHeader: UICollectionReusableView {
     
     // MARK: - Properties
     
@@ -54,6 +54,12 @@ class RMCharacterInfoHeader: UICollectionReusableView {
         return label
     }()
     
+    private let underlineView: UIView = {
+       let view = UIView()
+        view.backgroundColor = .twitterBlue
+        return view
+    }()
+    
     
     private lazy var statsView: UIView = {
         let view = UIView()
@@ -71,6 +77,9 @@ class RMCharacterInfoHeader: UICollectionReusableView {
         divider2.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
                         right: view.rightAnchor, paddingLeft: 8, height: 1.0)
         
+        addSubview(underlineView)
+        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, width: frame.width / 3, height: 2)
+        
         return view
     }()
     
@@ -78,6 +87,7 @@ class RMCharacterInfoHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         
         let labelStack = UIStackView(arrangedSubviews: [characterNameLabel, statusLabel])
         labelStack.axis = .vertical
@@ -136,3 +146,5 @@ class RMCharacterInfoHeader: UICollectionReusableView {
         return button
     }
 }
+
+

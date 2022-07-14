@@ -49,7 +49,7 @@ class ProfileController: UICollectionViewController {
         collectionView.backgroundColor = .white
         
         collectionView.register(RMCharacterCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.register(RMCharacterInfoHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(RMCharacterHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.contentInsetAdjustmentBehavior = .never
     }
  
@@ -73,7 +73,7 @@ extension ProfileController {
 
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! RMCharacterInfoHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! RMCharacterHeader
         header.character = character
         
         return header
