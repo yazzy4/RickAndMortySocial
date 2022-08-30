@@ -29,7 +29,7 @@ class RMProfileFilterCell: UICollectionViewCell {
         didSet {
             titleLabel.font = isSelected ? UIFont.boldSystemFont(ofSize: 16) :
                 UIFont.systemFont(ofSize: 14)
-            titleLabel.textColor = isSelected ? .twitterBlue : .lightGray
+            titleLabel.textColor = isSelected ? .rmGreen : .lightGray
         }
     }
     

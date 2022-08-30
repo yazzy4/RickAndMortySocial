@@ -30,7 +30,7 @@ class CharacterViewModel: ObservableObject {
         }
         
         var fakeUsername: String {
-            return "@\(character.name)"
+            return "@\(character.name.replacingOccurrences(of: " ", with: ""))"
         }
         
         var retweetAttributedString: NSAttributedString? {

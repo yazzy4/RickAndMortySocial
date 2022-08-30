@@ -38,7 +38,6 @@ class RMMainTabController: UITabBarController {
     // MARK: - Helpers
     
     func configureViewControllers() {
-        
         let feed = RMFeedController(collectionViewLayout: UICollectionViewFlowLayout())
         let nav1 = templateNavigationController(image: UIImage(named: "home_unselected"), rootViewController: feed)
         nav1.tabBarItem.title = "Characters"

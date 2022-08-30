@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-//TweetHeader
+
 class RMCharacterHeader: UICollectionReusableView {
     
     // MARK: - Properties
@@ -21,7 +21,7 @@ class RMCharacterHeader: UICollectionReusableView {
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
-        iv.backgroundColor = .twitterBlue
+        iv.backgroundColor = .rmGreen
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTapped))
         iv.addGestureRecognizer(tap)
@@ -57,7 +57,7 @@ class RMCharacterHeader: UICollectionReusableView {
     
     private let underlineView: UIView = {
        let view = UIView()
-        view.backgroundColor = .twitterBlue
+        view.backgroundColor = .rmGreen
         return view
     }()
     

@@ -73,13 +73,10 @@ class RMFeedController: UICollectionViewController {
         
         collectionView.register(RMCharacterCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "Characters"
-       
-        
-        
+   
     }
     
     func configureLeftBarButton() {
